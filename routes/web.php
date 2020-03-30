@@ -22,3 +22,5 @@ Route::get('/editar/{id}', 'PastelController@muestraEdicion');
 Route::post('/guardarEdicion', 'PastelController@guardaEdicion');
 
 Route::get('/borrar/{id}', 'PastelController@borrar');
+
+Route::resource('cliente', 'ClienteController');

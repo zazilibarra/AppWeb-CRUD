@@ -14,7 +14,8 @@ class ClienteController extends Controller
      */
     public function index()
     {
-        //
+        $clientes = Cliente::all();
+        return view('clientes')->with('clientes', $clientes);
     }
 
     /**
@@ -24,7 +25,7 @@ class ClienteController extends Controller
      */
     public function create()
     {
-        //
+        return view("creaCliente");
     }
 
     /**
@@ -35,7 +36,11 @@ class ClienteController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $cliente = new Cliente();
+        $cliente->nombre=$request->nombre;
+        $cliente->direccion=$request->direccion;
+        $cliente->save();
+        return redirect('/cliente');
     }
 
     /**
@@ -46,7 +51,7 @@ class ClienteController extends Controller
      */
     public function show(Cliente $cliente)
     {
-        //
+        return view('detallescliente')->with('cliente', $cliente);
     }
 
     /**
@@ -57,7 +62,7 @@ class ClienteController extends Controller
      */
     public function edit(Cliente $cliente)
     {
-        //
+        return view('editarCliente')->with('cliente', $cliente);
     }
 
     /**
@@ -69,7 +74,10 @@ class ClienteController extends Controller
      */
     public function update(Request $request, Cliente $cliente)
     {
-        //
+        $cliente->nombre = $request->nombre;
+        $cliente->direccion = $request->direccion;
+        $cliente->save();
+        return redirect('/cliente');
     }
 
     /**
@@ -80,6 +88,7 @@ class ClienteController extends Controller
      */
     public function destroy(Cliente $cliente)
     {
-        //
+        $cliente->delete();
+        return redirect('/cliente');
     }
 }

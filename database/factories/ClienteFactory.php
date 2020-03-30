@@ -7,6 +7,7 @@ use Faker\Generator as Faker;
 
 $factory->define(Cliente::class, function (Faker $faker) {
     return [
-        //
+        'nombre'=>$faker->name,
+        'direccion'=>$faker->address
     ];
 });
