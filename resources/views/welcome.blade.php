@@ -16,11 +16,13 @@
         <div class="container">
             <br>
             <h1>Crea Pasteles</h1>
-            <form action="/guardaPastel" method="POST">
+            <form action="/guardaPastel" method="POST" enctype="multipart/form-data">
                 @csrf
                 <input class="form-control" type="text" name="sabor" placeholder="Sabor">
                 <br>
                 <input class="form-control" type="number" name="precio" placeholder="Precio">
+                <br>
+                <input type="file" class="form-control" name="imagen">
                 <br>
                 <input class="btn btn-primary" type="submit">
             </form>
@@ -38,6 +40,7 @@
                     <tr>
                         <td>{{$p->sabor}}</td>
                         <td>{{$p->precio}}</td>
+                        <td><img src="{{asset('storage/'.$p->rutaimg)}}" style="width:50px;" alt=""></td>
                         <td><a href="/editar/{{$p->id}}">Editar</a> <a href="/borrar/{{$p->id}}">Borrar</a></td>
                     </tr>
                     @endforeach

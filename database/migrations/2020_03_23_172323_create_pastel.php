@@ -17,6 +17,7 @@ class CreatePastel extends Migration
             $table->bigIncrements('id');
             $table->string('sabor');
             $table->integer('precio');
+            $table->string('rutaimg')->nullable();
             $table->timestamps();
         });
     }
